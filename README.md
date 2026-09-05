@@ -7,7 +7,7 @@ A static, read-only collection of infinite canvases, powered by React and Excali
 Use Node.js 22, then install and run the site:
 
 ```sh
-npm install
+npm ci
 npm run dev
 ```
 

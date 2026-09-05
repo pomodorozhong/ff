@@ -17,9 +17,8 @@ jobs:
       - uses: actions/setup-node@v5
         with:
           node-version: 22
-      # This repository pins every direct dependency in package.json. Generate
-      # the dependency tree during CI until a lockfile can be committed.
-      - run: npm install --ignore-scripts
+          cache: npm
+      - run: npm ci
       - run: npm run check:boards
       - run: npm run validate:boards
       - run: npm run typecheck
