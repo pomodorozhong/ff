@@ -13,12 +13,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
           node-version: 22
-          cache: npm
-      - run: npm ci
+      # This repository pins every direct dependency in package.json. Generate
+      # the dependency tree during CI until a lockfile can be committed.
+      - run: npm install --ignore-scripts
       - run: npm run check:boards
       - run: npm run validate:boards
       - run: npm run typecheck
